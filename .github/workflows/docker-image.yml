@@ -30,4 +30,4 @@ jobs:
         with:
           pull: true
           push: true
-          tags: phoenixmedia/nginx-php:${{ steps.extract_branch.outputs.branch }}
+          tags: see49/nginx-php:${{ steps.extract_branch.outputs.branch }}
