@@ -47,10 +47,8 @@ echo -e "******* PHP SETUP ************"
 echo -e "******************************"
 
 # Enable Xdebug
-[[ -z "$XDEBUG_INSTALL" ]] && XDEBUG_INSTALL="$DEVELOPMENT_ENV"
-[[ -z "$XDEBUG_REMOTE_HOST" ]] && XDEBUG_REMOTE_HOST="$VM_HOST_IP"
-[[ -z "$XDEBUG_IDE_KEY" ]] && XDEBUG_IDE_KEY="mykey"
-if [ ! -z "$XDEBUG_INSTALL" ] && [ ! -f /.deployed_xdebug ]; then
+[[ -z "$XDEBUG_IDE_KEY" ]] && XDEBUG_IDE_KEY="VSCODE"
+if [ ! -f /.deployed_xdebug ]; then
     if [ ! -f /etc/php81/conf.d/50_xdebug.ini ]; then
         echo -e "zend_extension=xdebug.so\nxdebug.mode=debug,profile\nxdebug.client_host=$XDEBUG_REMOTE_HOST\nxdebug.client_port=9000\nxdebug.start_with_request=trigger\nxdebug.output_dir=/var/www/html/var\nxdebug.max_nesting_level=500\n" > /etc/php81/conf.d/50_xdebug.ini
         echo -e "export export XDEBUG_SESSION=\"$XDEBUG_IDE_KEY\"" >> /root/.bashrc
